@@ -32,6 +32,10 @@ module AlexaRuby
       @resp[:response][:directives] = [directive]
     end
 
+    def add_api_response(values = {})
+      @resp[:response][:apiResponse] = values
+    end
+
     # Add one session attribute
     #
     # @param key [String] atrribute key
