@@ -32,7 +32,8 @@ module AlexaRuby
       @resp[:response][:directives] = [directive]
     end
 
-    def add_api_response(values = {})
+    def add_api_response(values = {}, should_end_session = true)
+      @resp[:response][:shouldEndSession] = should_end_session
       @resp[:response][:apiResponse] = values
     end
 
