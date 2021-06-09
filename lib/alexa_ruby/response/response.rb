@@ -14,6 +14,26 @@ module AlexaRuby
       }
     end
 
+    def delegate_to_conversation(utterance_set_name, slots = {})
+      @resp[:response].delete(:shouldEndSession)
+      @resp[:response][:directives] = [
+        {
+          type: "Dialog.DelegateRequest",
+          target: "AMAZON.Conversations",
+          period: {
+            until: "EXPLICIT_RETURN"
+          },
+          updatedRequest: {
+            type: "Dialog.InputRequest",
+            input: {
+              name: utterance_set_name,
+              slots: slots
+            }
+          }
+        }
+      ]
+    end
+
     # Add one session attribute
     #
     # @param key [String] atrribute key

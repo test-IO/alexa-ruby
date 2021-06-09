@@ -53,6 +53,8 @@ module AlexaRuby
         LaunchRequest.new(@req)
       when /Intent/
         IntentRequest.new(@req)
+      when /Dialog\.API\.Invoked/
+        DialogRequest.new(@req)
       when /SessionEnded/
         SessionEndedRequest.new(@req)
       when /AudioPlayer/, /Playback/, /System/
